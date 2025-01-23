@@ -47,7 +47,7 @@ jobs:
         sudo ln -sf pyston /usr/bin/python
         sudo chown -RH $(whoami) $(python -c 'import os,inspect;print(os.path.dirname(inspect.getfile(inspect)))')
         sudo chown -hRH $(whoami) /usr/bin
-        python -m pip install --upgrade pip
+        python -m pip install  --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --upgrade pip
     # - name: "Install Visual C++ for Python 2.7"
     #   if: ${{ matrix.os == 'windows-latest' && matrix.python-version == '2.7' }}
     #   run: |
@@ -57,21 +57,21 @@ jobs:
     - name: Upgrade pip
       if: ${{ matrix.python-version != '2.7' && matrix.python-version != '3.4' }}
       run: |
-        python -m pip install --upgrade pip
+        python -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --upgrade pip
     - name: Upgrade pip (2.7)
       if: ${{ matrix.python-version == '2.7' }}
       run: |
-        python -m pip install --upgrade pip~=20.0
-        python -m pip install --upgrade setuptools~=44.0
+        python -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --upgrade pip~=20.0
+        python -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --upgrade setuptools~=44.0
     - name: Upgrade pip (3.4)
       if: ${{ matrix.python-version == '3.4' }}
       run: |
-        python -m pip install --upgrade pip~=19.0
-        python -m pip install --upgrade setuptools~=43.0
-        python -m pip install pybind11
+        python -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --upgrade pip~=19.0
+        python -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org --upgrade setuptools~=43.0
+        python -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pybind11
     - name: Install dependencies
       run: |
-        python -m pip install build wheel
+        python -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org build wheel
     - name: Build sdist
       if: ${{ matrix.os == 'macos-latest' && matrix.python-version == '2.7' }}
       run:
@@ -91,7 +91,7 @@ jobs:
     - name: Audit wheel
       if: ${{ matrix.python-version == 'pyston' }}
       run: |
-        python -m pip install auditwheel~=5.1.0
+        python -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org auditwheel~=5.1.0
         python -m auditwheel repair --plat linux_x86_64 --wheel-dir dist dist/*.whl
         rm -f dist/*-linux*.whl
         for file in dist/*linux_x86_64.*whl; do mv ${file} ${file//linux_x86_64./}; done
