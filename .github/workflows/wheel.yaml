@@ -15,16 +15,16 @@ jobs:
         exclude:
           - os: macos-latest
             architecture: "x86"
-        include:
-          # - python-version: 'pyston'
-          #   os: ubuntu-18.04
-          #   architecture: "x64"
-          - python-version: '3.4'
-            os: windows-latest
-            architecture: "x86"
-          - python-version: '3.4'
-            os: windows-latest
-            architecture: "x64"
+        # include:
+        #   # - python-version: 'pyston'
+        #   #   os: ubuntu-18.04
+        #   #   architecture: "x64"
+        #   - python-version: '3.4'
+        #     os: windows-latest
+        #     architecture: "x86"
+        #   - python-version: '3.4'
+        #     os: windows-latest
+        #     architecture: "x64"
 
     steps:
     - uses: actions/checkout@v3
