@@ -98,7 +98,7 @@ jobs:
     - name: Upload wheel
       uses: actions/upload-artifact@v4
       with:
-        name: wheel-{{matrix.os}}-{{matrix.architecture}}-{{matrix.python-version}}
+        name: wheel-${{matrix.os}}-${{matrix.architecture}}-${{matrix.python-version}}
         path: dist
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
